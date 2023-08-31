@@ -1,0 +1,36 @@
+---
+title: "Homework0"
+format: html
+editor: visual
+author: Dailin Luo
+---
+
+First, I defined a function for solving quadratic equations. Then a line graph shows the parabola and a dash line, which is f(x)=0, so that you could see the intersect(s) which is/are the solution(s) to ax^2 + bx +c = 0.
+
+```{r}
+solve.quadratic <- function(a, b, c){
+  discriminant <- b^2 - 4*a*c
+  if(discriminant < 0){
+    return(paste("This quadratic function has no real solution."))
+  }else if(discriminant == 0){
+    x_sol <- (-b)/(2*a)
+    return(x_sol)
+  }else{
+    x_large <- (-b + sqrt(discriminant))/2*a
+    x_small <- (-b - sqrt(discriminant))/2*a
+    return(c(x_large, x_small))  
+  }
+}
+
+a = 1
+b = 3
+c = 2
+
+solve.quadratic(a, b, c)
+
+x <- seq(-5, 5, length=300)
+plot(x, a*x^2+b*x+c, type="l", ylab = "f(x)")
+abline(h = 0, lty = 2)
+```
+
+
